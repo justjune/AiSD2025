@@ -2,6 +2,7 @@
 //Алгоритм рекурсивного поиска произвольного элемента в двоичном дереве
 //ПМ-2025 Овсянникова Анастасия
 #include <iostream>
+#include <limits>
 
 using item_type = int;
 
@@ -55,6 +56,10 @@ int main() {
     } else {
         std::cout << "Value not found." << std::endl;
     }
+    
+    std::cout << "Press ENTER to exit...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 
     return 0;
 }

@@ -1,23 +1,39 @@
 CXX = g++
 
-CXXFLAGS = -std=c++11 -Wall -g
 
-TARGET = search_program
+CXXFLAGS = -Wall -std=c++11
 
-SOURCES = L307_110test.cpp
 
-OBJECTS = $(SOURCES:.cpp=.o)
+ifeq ($(OS),Windows_NT)
+	RM = del /Q
+	TARGET = tree_app.exe 
+else
+	RM = rm -f 
+	TARGET = tree_app 
+endif
+
+
+SRCS = L307_110test.cpp
+
+OBJECTS = $(SRCS:.cpp=.o)
+
 
 all: $(TARGET)
 
+
 $(TARGET): $(OBJECTS)
+
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
+
 
 %.o: %.cpp
 
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+
 clean:
-	rm -f $(TARGET) $(OBJECTS)
+
+	$(RM) $(OBJECTS) $(TARGET)
+
 
 .PHONY: all clean
