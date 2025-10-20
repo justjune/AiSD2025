@@ -13,6 +13,7 @@ struct List {
 List* item_ahead(List* l, List* x);
 
 int main() {
+    system("chcp 65001 > nul");
     // Тест 1: Пустой список.
     List* empty_list = nullptr;
     List* node1 = new List(1);
