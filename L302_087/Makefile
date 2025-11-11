@@ -1,5 +1,5 @@
 ifeq ($(OS),Windows_NT)
-	RM=del
+	RM=rm
 	EXT=.exe
 else
 	RM=rm
@@ -20,4 +20,4 @@ L302_087test.o: L302_087test.cpp L302_087.hpp
 
 .PHONY: clean
 clean:
-	$(RM) $(objects) $(l302087o) m.exe L302087.exe
+	$(RM) *.o *.exe

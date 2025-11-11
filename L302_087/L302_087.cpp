@@ -7,6 +7,8 @@ using namespace std;
 struct List{
     int value;
     List* next;
+    
+    
 };
 
 List* search_list(List* l, int x){//основная функция, которая выполняет рекурсивный поиск элемента в связаном списке
