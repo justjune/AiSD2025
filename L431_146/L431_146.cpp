@@ -131,7 +131,7 @@ struct PriorityQueue
     {
 
         queueBody.assign(begin(elements), end(elements));
-        // �������� ���������� queueBody �� �������� �� ��������� ����������
+        // replace queueBody to elements from diapazone
         for (int i = queueBody.size() / 2 - 1; i >= 0; i--)
             bubble_down_no_reqursion(i);
     }
@@ -172,9 +172,9 @@ struct PriorityQueue
     template<typename Container>
     void make_heap(Container& elements) {
 
-        queueBody.clear(); // ���� ��� ���� �������� � �������
-        // � make_heap_fast assign ������������� queueBody, �������
-        // ��� �� ����� ������� ���
+        queueBody.clear(); // if pyramid already existed
+        // to make_heap_fast assign reinitialize queueBody, becouse
+        // don't need to clean it
         for (auto el = begin(elements); el != end(elements); ++el)
             pq_insert(*el);
 
@@ -186,7 +186,7 @@ struct PriorityQueue
         {
             cout << "Priority queue is empty";
             return -1;
-            // -1 ��� � ������
+            // -1 like Skien
         }
         else
         {
@@ -201,7 +201,6 @@ struct PriorityQueue
 };
 
 template<typename Container>
-// ����� ��� ��� � ���������� � ��� ���������
 auto heap_sort(Container& elements)
 {
     using Item = typename Container::value_type;
