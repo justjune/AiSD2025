@@ -1,0 +1,12 @@
+CXX = g++
+RM = del
+CXXFLAGS = -std=c++17 -Wall -Wextra
+
+L431146.exe: L431_146.o
+	$(CXX) -o L431146.exe L431_146.o
+
+L431_146.o: L431_146.cpp
+	$(CXX) $(CXXFLAGS) -c L431_146.cpp
+
+clean:
+	$(RM) L431_146.o L431146.exe
