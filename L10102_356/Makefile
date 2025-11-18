@@ -1,11 +1,11 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 
-L102355.exe: L102_355.o
-  $(CXX) -o L102355.exe L102_355.o
+L10102356.exe: L10102_356.o
+  $(CXX) -o L10102356.exe L10102_356.o
 
-L102_355.o: L102_355.cpp
-  $(CXX) $(CXXFLAGS) -c L102_355.cpp
+L10102_356.o: L10102_356.cpp
+  $(CXX) $(CXXFLAGS) -c L10102_356.cpp
 
 clean:
-  rm -f L102_355.o L102355.exe
+  rm -f L10102_356.o L10102356.exe
