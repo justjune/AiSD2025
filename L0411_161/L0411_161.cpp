@@ -48,21 +48,23 @@ void merge(span<Item> s, int low, int middle, int high)
 template<typename Item>
 void merge_sort(span<Item> s, int low, int high) 
 {
-    while (low < high) 
+    if (low >= high)
     {
-        int middle = low + (high - low) / 2;
-        
-        if (middle - low < high - middle) 
-        {
-            merge_sort(s, low, middle);
-            merge(s, low, middle, high);
-            low = middle + 1;
-        } 
-        else 
-        {
-            merge_sort(s, middle + 1, high);
-            merge(s, low, middle, high);
-            high = middle;
-        }
+        return;
     }
+    
+    int middle = low + (high - low) / 2;
+    
+    if (middle - low < high - middle) 
+    {
+        merge_sort(s, low, middle);      
+        merge_sort(s, middle + 1, high); 
+    } 
+    else 
+    {
+        merge_sort(s, middle + 1, high);  
+        merge_sort(s, low, middle);      
+    }
+    
+    merge(s, low, middle, high);
 }
