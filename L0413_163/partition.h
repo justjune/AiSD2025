@@ -18,17 +18,17 @@ void partition_vectors(const vector<T>& arr, size_t l, size_t h,
     size_t n = arr.size();
 
     if (l > h || h >= n) 
-        throw out_of_range("Некорректные границы");
+        throw out_of_range("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РіСЂР°РЅРёС†С‹");
     
 
     size_t n1 = h - l + 1;
     size_t n2 = n - n1;
 
-    // очищаем вектора
+    // РѕС‡РёС‰Р°РµРј РІРµРєС‚РѕСЂР°
     arr1.clear();
     arr2.clear();
 
-    // изменяем размер выходных векторов
+    // РёР·РјРµРЅСЏРµРј СЂР°Р·РјРµСЂ РІС‹С…РѕРґРЅС‹С… РІРµРєС‚РѕСЂРѕРІ
     arr1.resize(n1);
     arr2.resize(n2);
 
@@ -36,7 +36,7 @@ void partition_vectors(const vector<T>& arr, size_t l, size_t h,
         arr1[i] = arr[l + i];
     }
 
-    // заполняем второй вектор сначала до l потом после h+1
+    // Р·Р°РїРѕР»РЅСЏРµРј РІС‚РѕСЂРѕР№ РІРµРєС‚РѕСЂ СЃРЅР°С‡Р°Р»Р° РґРѕ l РїРѕС‚РѕРј РїРѕСЃР»Рµ h+1
     size_t arr2_index = 0;
     for (size_t i = 0; i < l; i++) {
         arr2[arr2_index++] = arr[i];

@@ -17,13 +17,13 @@ long long hashFun(const vector<T>& v) {
     long long hash_value = 0;
     size_t n = v.size();
 
-    // перемешивание индексов (сдвигаем начальную точку)
+    // РїРµСЂРµРјРµС€РёРІР°РЅРёРµ РёРЅРґРµРєСЃРѕРІ (СЃРґРІРёРіР°РµРј РЅР°С‡Р°Р»СЊРЅСѓСЋ С‚РѕС‡РєСѓ)
     int k = n / 2;
     for (size_t i = 0; i < n; ++i) {
-        // индекс с циклическим сдвигом
+        // РёРЅРґРµРєСЃ СЃ С†РёРєР»РёС‡РµСЃРєРёРј СЃРґРІРёРіРѕРј
         size_t idx = (i + k) % n;
 
-        // преобразование элемента в int
+        // РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ int
         long long val = static_cast<long long>(v[idx]);
 
         hash_value = (hash_value * P + val) % M;
@@ -42,9 +42,9 @@ long long hashFun(const string& s) {
     string str = s;
     int char_code = 0;
 
-    str = str.substr(n - k) + str.substr(0, n - k); // сдвиг для перемешивания символов
+    str = str.substr(n - k) + str.substr(0, n - k); // СЃРґРІРёРі РґР»СЏ РїРµСЂРµРјРµС€РёРІР°РЅРёСЏ СЃРёРјРІРѕР»РѕРІ
     for (char c : str) {
-        char_code = static_cast<int> (c); // получаем код символа
+        char_code = static_cast<int> (c); // РїРѕР»СѓС‡Р°РµРј РєРѕРґ СЃРёРјРІРѕР»Р°
         hash_value += (static_cast<long long>(hash_value) * P + char_code) % M;
     }
     return hash_value;
