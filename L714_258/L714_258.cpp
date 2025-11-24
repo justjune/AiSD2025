@@ -10,8 +10,8 @@ extern int parent[];
 
 
 void connected_components(graph* g) {
-    int c;            
-    int i;
+    int c;  /*Номер компонента*/
+    int i;  /* Счетик */
 
     initialize_search(g);
 
@@ -25,7 +25,7 @@ void connected_components(graph* g) {
         }
     }
 }
-void process_vertex_early(int v) {
+void process_vertex_early(int v) { /* Вершина для обработки */
     printf(" %d", v);
 }
 
