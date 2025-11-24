@@ -4,14 +4,14 @@
 
 #include "bfs-dfs.h"
 
-extern bool processed[];    /* which vertices have been processed */
-extern bool discovered[];   /* which vertices have been found */
-extern int parent[];        /* discovery relation */
+extern bool processed[];    
+extern bool discovered[];  
+extern int parent[];       
 
 
 void connected_components(graph* g) {
-    int c;              /* component number */
-    int i;              /* counter */
+    int c;            
+    int i;
 
     initialize_search(g);
 
