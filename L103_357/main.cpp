@@ -25,6 +25,6 @@ long long fib_dp(int n) {
     return f[n];
 }
 
-int main{
+int main(){
     return 0;
 }
