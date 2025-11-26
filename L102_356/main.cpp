@@ -31,5 +31,5 @@ long long fib_c_driver(size_t n) {
 
 int main
 {
-    return 0
+    return 0;
 }
