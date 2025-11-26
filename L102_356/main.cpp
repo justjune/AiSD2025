@@ -1,4 +1,4 @@
-//Число фибоначи без кэширования
+//Число фибоначи с кэширования
 #include <vector>
 #include <iostream>
 
@@ -27,4 +27,9 @@ long long fib_c_driver(size_t n) {
 
     // Остальные ячейки уже инициализированы как UNKNOWN в объявлении вектора
     return fib_c(n);
+}
+
+int main
+{
+    return 0
 }
