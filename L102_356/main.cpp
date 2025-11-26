@@ -29,7 +29,7 @@ long long fib_c_driver(size_t n) {
     return fib_c(n);
 }
 
-int main
+int main()
 {
     return 0;
 }
