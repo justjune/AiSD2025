@@ -8,9 +8,9 @@ long long fib_ultimate(int n) {
     
     long long back2 = 0;  // F(n-2)
     long long back1 = 1;  // F(n-1)
-    
+    long long next = 0;
     for (int i = 2; i < n; i++) {
-        long long next = back1 + back2;
+        next = back1 + back2;
         back2 = back1;
         back1 = next;
     }
@@ -18,3 +18,6 @@ long long fib_ultimate(int n) {
     return back1 + back2;
 }
 
+int main(){
+    return 0;
+}
