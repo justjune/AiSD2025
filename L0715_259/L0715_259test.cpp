@@ -1,9 +1,13 @@
-#include "graph.hpp"
+#include "L0715_259.hpp"
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 
 int main(){
+
+    SetConsoleOutputCP(CP_UTF8); //кодировка
+
     cout << "=== ТЕСТ 1: Ориентированный двудольный граф ===" << endl;
     
     Graph g;

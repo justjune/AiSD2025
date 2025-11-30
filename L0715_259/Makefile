@@ -1,23 +1,30 @@
 CXX = g++
-CXXFLAGS = -Wall -Wextra -g
-TARGET = graph_test.exe
+CXXFLAGS = -Wall -Wextra -g -std=c++17 -DUNICODE -D_UNICODE
+LDFLAGS = -municode
 
-SOURCES = test.cpp graph.cpp
-HEADERS = graph.hpp
+TARGET = L0715_259.exe
+SOURCES = L0715_259test.cpp L0715_259.cpp
+HEADERS = L0715_259.hpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJECTS)
 
-test.o: test.cpp graph.hpp
-	$(CXX) $(CXXFLAGS) -c test.cpp
+L0715_259test.o: L0715_259test.cpp L0715_259.hpp
+	$(CXX) $(CXXFLAGS) -c L0715_259test.cpp
 
-graph.o: graph.cpp graph.hpp
-	$(CXX) $(CXXFLAGS) -c graph.cpp
+L0715_259.o: L0715_259.cpp L0715_259.hpp
+	$(CXX) $(CXXFLAGS) -c L0715_259.cpp
 
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+ifeq ($(OS),Windows_NT)
+	del $(TARGET)
+	del $(OBJECTS)
+else
+	rm -f $(TARGET)
+	rm -f $(OBJECTS)
+endif
 
 run: $(TARGET)
 	./$(TARGET)
