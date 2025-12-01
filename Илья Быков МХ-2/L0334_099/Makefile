@@ -1,24 +1,14 @@
-CXX = g++
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=L0334_099.cpp L0334_099test.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=L0334_099
 
-# Флаги компиляции
-CXXFLAGS = -Wall -std=c++17
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-# Имя исполняемого файла, будет L0334_099.
-TARGET = L0334_099
-
-$(TARGET): L0334_099.cpp
-    $(CXX) $(CXXFLAGS) -o $@ $<
-
-run: $(TARGET)
-    ./$(TARGET)
-
-clean:
-    rm -f $(TARGET)
-
-all: $(TARGET)
-
-help:
-    @echo "Доступные команды:"
-    @echo "  make       - собрать проект"
-    @echo "  make run   - собрать и запустить проект"
-    @echo "  make clean - очистить проект"
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
