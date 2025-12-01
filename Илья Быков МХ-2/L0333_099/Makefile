@@ -1,27 +1,14 @@
-# Определяем компилятор C++
-CXX = g++
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=L0332_099.cpp L0332_099test.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=L0332_099
 
-# Определяем флаги компиляции
-CXXFLAGS = -Wall -std=c++17
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-# Определяем имя исполняемого файла
-TARGET = L0333_099
-
-$(TARGET): L0333_099.cpp
-    $(CXX) $(CXXFLAGS) -o $@ $^
-
-run: $(TARGET)
-    ./$(TARGET)
-
-clean:
-    rm -f $(TARGET)
-    @echo "Файл $(TARGET) удален."
-
-all: $(TARGET)
-
-# Правило 'help' для вывода справки.
-help:
-    @echo "Использование:"
-    @echo "  make      - собрать проект"
-    @echo "  make run  - собрать и запустить проект"
-    @echo "  make clean- очистить проект"
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
