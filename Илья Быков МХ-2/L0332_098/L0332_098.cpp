@@ -3,27 +3,20 @@
 //Быков Илья МХ-2 20.10.25
 #include <iostream>
 
-// Предполагаем, что структура List определена следующим образом:
-template <typename T>
+template <typename T> // Предполагаем, что структура List определена следующим образом:
 struct List {
-    T item;
-    List<T>* next;
-    List(T val) : item(val), next(nullptr) {}
+    T item; // Определение типа узла
+    List<T>* next; // Создание указателя на следующий узел
+    List(T val) : item(val), next(nullptr) {} //Конструктор создания нового узла
 };
-
 template <typename T>
-List<T>* search_list(List<T>* l, T x) {
-    // Если список пуст, возвращаем nullptr
-    if (l == nullptr) {
+List<T>* search_list(List<T>* l, T x) { // Функция рекурсивного поиска элемента x
+    if (l == nullptr) { // Если список пуст, возвращаем nullptr
         return nullptr;
     }
-
-    // Если элемент текущего узла равен искомому значению
-    if (l->item == x) {
-        // Возвращаем указатель на текущий узел
-        return l;
+    if (l->item == x) { // Если элемент текущего узла равен искомому значению
+        return l; // Возвращаем указатель на текущий узел
     } else {
-        // Иначе, рекурсивно вызываем функцию поиска для следующего узла списка
-        return search_list(l->next, x);
+        return search_list(l->next, x); // Иначе, рекурсивно вызываем функцию поиска для следующего узла списка
     }
 }
