@@ -1,27 +1,14 @@
-# C++ compiler
-CXX = g++
+CC=g++
+CFLAGS=-c -Wall
+LDFLAGS=
+SOURCES=L0332_098.cpp L0332_098test.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+EXECUTABLE=L0332_098
 
-# Build L0332_099
-L0332_099:
-    $(CXX) -o L0332_099.exe L0332_099.cpp L0332_099test.cpp
-    @echo "=== L0332_099 built successfully! ==="
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS) 
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
 
-# Run program
-run: L0332_099
-    ./L0332_099.exe
-
-# Clean
-clean:
-    rm -f L0332_099.exe
-    @echo "=== L0332_099.exe deleted ==="
-
-# Help
-help:
-    @echo "=== Commands for L0332_099 ==="
-    @echo "make L0332_099  - build program"
-    @echo "make run       - build and run"
-    @echo "make clean     - delete exe-file"
-    @echo "make help      - show this help"
-
-# Default target
-all: L0332_099
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
