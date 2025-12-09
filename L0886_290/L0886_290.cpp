@@ -1,46 +1,71 @@
+#include <iostream>  // Для стандартного ввода/вывода (cout)
 #include "L0886_290.hpp"
-#include <algorithm>
-#include <numeric>
+using namespace std; // Использование стандартного пространства имен
 
-UnionFind::UnionFind(int n) : parent(n), rank(n, 0) {
-    std::iota(parent.begin(), parent.end(), 0);
+// Рекурсивный поиск корня множества для вершины x
+int find(set_union *s, int x) {
+    if (s->parent[x] == x) {  // Если вершина - корень своего множества
+        return x;  // Возвращаем её
+    }
+    return find(s, s->parent[x]);  // Рекурсивно ищем корень родителя
 }
 
-int UnionFind::find(int i) {
-    if (parent[i] == i) return i;
-    return parent[i] = find(parent[i]);
-}
-
-void UnionFind::unite(int i, int j) {
-    int root_i = find(i);
-    int root_j = find(j);
-    if (root_i != root_j) {
-        if (rank[root_i] > rank[root_j]) {
-            parent[root_j] = root_i;
-        }
-        else if (rank[root_i] < rank[root_j]) {
-            parent[root_i] = root_j;
-        }
-        else {
-            parent[root_j] = root_i;
-            rank[root_i]++;
-        }
+// Объединение двух множеств, содержащих вершины s1 и s2
+void union_sets(set_union *s, int s1, int s2) {
+    int r1 = find(s, s1);  // Находим корень первого множества
+    int r2 = find(s, s2);  // Находим корень второго множества
+    
+    if (r1 == r2) {  // Если вершины уже в одном множестве
+        return;      // Ничего не делаем
+    }
+    
+    // Объединение по размеру: меньший массив присоединяем к большему
+    if (s->size[r1] >= s->size[r2]) {  // Если первое множество больше или равно
+        s->size[r1] += s->size[r2];    // Увеличиваем размер первого
+        s->parent[r2] = r1;            // Делаем r1 родителем для r2
+    } else {                           // Если второе множество больше
+        s->size[r2] += s->size[r1];    // Увеличиваем размер второго
+        s->parent[r1] = r2;            // Делаем r2 родителем для r1
     }
 }
 
-bool UnionFind::are_connected(int r, int f) {
-    return find(r) == find(f);
+// Проверка, находятся ли две вершины в одной компоненте связности
+bool same_component(set_union *s, int a, int b) {
+    return find(s, a) == find(s, b);  // Сравниваем корни множеств
 }
 
-int kruskal(std::vector<Edge>& edges, int num_vertices) {
-    int total_mst_wight = 0;
-    UnionFind uf(num_vertices);
-    std::sort(edges.begin(), edges.end());
-    for (const auto& edge : edges) {
-        if (!uf.are_connected(edge.r, edge.f)) {
-            total_mst_wight += edge.wight;
-            uf.unite(edge.r, edge.f);
+// Функция сравнения для сортировки ребер по весу
+bool weight_compare(edge_pair a, edge_pair b) {
+    return a.weight < b.weight;  // Возвращаем true, если вес a меньше веса b
+}
+
+// Копирование ребер из графа в массив для сортировки
+void to_edge_array(graph *g, edge_pair e[]) {
+    for (int i = 0; i < g->nedges; i++) {  // Проходим по всем ребрам графа
+        e[i] = g->edges[i];  // Копируем ребро в массив e
+    }
+}
+
+// Алгоритм Крускала для построения минимального остовного дерева
+void kruskal(graph *g) {
+    int i;  // Счетчик цикла
+    set_union s;  // Структура для системы непересекающихся множеств
+    edge_pair e[MAXV+1];  // Массив ребер для сортировки
+    
+    set_union_init(&s, g->nvertices);  // Инициализируем Union-Find
+    to_edge_array(g, e);  // Копируем ребра графа в массив e
+    
+    // Сортируем ребра по возрастанию веса
+    sort(e, e + g->nedges, weight_compare);
+    
+    // Проходим по всем ребрам в порядке возрастания веса
+    for (i = 0; i < g->nedges; i++) {
+        // Если вершины ребра находятся в разных компонентах
+        if (!same_component(&s, e[i].x, e[i].y)) {
+            // Выводим ребро как часть минимального остовного дерева
+            cout << "edge (" << e[i].x << "," << e[i].y << ") in MST" << endl;
+            // Объединяем компоненты этих вершин
+            union_sets(&s, e[i].x, e[i].y);
         }
     }
-    return total_mst_wight;
 }
