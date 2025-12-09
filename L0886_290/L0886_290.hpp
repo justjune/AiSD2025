@@ -1,26 +1,36 @@
 #ifndef L0886_290_HPP
 #define L0886_290_HPP
+#define MAXV 1000 // Максимальное количество вершин в графе
 
-#include <vector>
+// Структура для системы непересекающихся множеств (Union-Find)
+struct set_union {
+    int parent[MAXV+1];  // Массив родительских вершин для каждой вершины
+    int size[MAXV+1];    // Размер компоненты для каждой вершины
+    int n;               // Количество элементов (вершин) в системе
+};
 
-struct Edge {
-    int r, f;        // Вершины ребра
-    int wight;       // Вес ребра
-    bool operator<(const Edge& other) const {
-        return wight < other.wight;
+// Структура для хранения ребра графа
+struct edge_pair {
+    int x;       // Первая вершина ребра
+    int y;       // Вторая вершина ребра
+    int weight;  // Вес ребра
+};
+
+// Структура графа
+struct graph {
+    int nvertices;            // Количество вершин в графе
+    int nedges;               // Количество ребер в графе
+    edge_pair edges[MAXV+1];  // Массив ребер графа
+};
+
+// Инициализация системы непересекающихся множеств
+void set_union_init(set_union *s, int n) {
+    int i;  // Счетчик цикла
+    
+    s->n = n;  // Устанавливаем количество элементов
+    for (i = 0; i <= n; i++) {  // Инициализируем каждый элемент
+        s->parent[i] = i;  // Каждый элемент - корень своего множества
+        s->size[i] = 1;    // Размер каждого множества - 1
     }
-};
-
-class UnionFind {
-    std::vector<int> parent;
-    std::vector<int> rank;
-public:
-    UnionFind(int n);
-    int find(int i);
-    void unite(int i, int j);
-    bool are_connected(int r, int f);
-};
-
-int kruskal(std::vector<Edge>& edges, int num_vertices);
-
+}
 #endif
