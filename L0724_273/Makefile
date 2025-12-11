@@ -16,3 +16,4 @@ clean:
 
 run: L0724273.exe
 	./L0724273.exe
+all: L0724_273.exe run clean
