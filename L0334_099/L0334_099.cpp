@@ -11,7 +11,7 @@ template <typename T>
 List<T>* item_ahead(List<T>* l, List<T>* x) {
     if (l == nullptr || l->next == nullptr) { // Если список пуст или l - последний элемент
         return nullptr; // Возвращаем null
-    };
+    }
     if (l->next == x) { // Проверяем, является ли следующий элемент за l элементом x
         return l;  // Если да, то возвращаем l
     }
