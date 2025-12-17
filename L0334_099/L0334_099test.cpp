@@ -5,20 +5,20 @@
 
 int main() {
     system("chcp 65001 > nul");
-    // Тест 1: Пустой список.
+    // Тест 1: Пустой список
     List* empty_list = nullptr;
     List* node1 = new List(1);
     assert(item_ahead(empty_list, node1) == nullptr);
     delete node1;
 
-    // Тест 2: Один элемент в списке.
+    // Тест 2: Один элемент в списке
     node1 = new List(1);
     List* node2 = new List(2);
     assert(item_ahead(node1, node2) == nullptr);
     delete node1;
     delete node2;
 
-    // Тест 3: x находится сразу после l.
+    // Тест 3: x находится сразу после l
     node1 = new List(1);
     node2 = new List(2);
     node1->next = node2;
