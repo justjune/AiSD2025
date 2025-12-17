@@ -3,10 +3,17 @@
 #include "L0709_254.hpp"
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include <queue>
 using namespace std;
 
 #define MAXV 100				// Максимальное количество вершин
+
+
+void process_vertex_late(int v)
+{
+    cout << v;
+}
 
 void bfs(Graph *g, int start) {
 //////////////         Предыдущий Листинг 7.8
@@ -45,7 +52,7 @@ for (int i = 0; i <= g->nvertices; ++i) {
                 }
             }
         }
-          //process_vertex_late(v);	   Функция пост-обработки вершины
+      process_vertex_late(v);	   // Функция пост-обработки вершины
     }
 }
 
@@ -62,35 +69,33 @@ void initialize_graph(Graph &g, bool directed)		// Листинг 7.2 (Иниц�
     g.edges.resize(MAXV);
 }
 
-void read_graph(Graph &g, bool directed)		//Листинг 7.3 (Чтение графа из потока)
-{
-    int m;					
-    int x, y;						
-
-    cin >> g.nvertices;						
-    cin >> m;						
-    initialize_graph(g, directed);
+void read_graph(Graph &g, bool directed,  ifstream &cin) {      // Листинг 7.3 (Чтение графа из файла)
+    int m;						
+    int x, y;							
+	initialize_graph(g, directed);
+     cin >> g.nvertices;					
+  cin >> m;							
 
     for (int i = 0; i < m; i++) {
         cin >> x;
         cin >> y;					
-   // insert_edge(&g, x, y, directed);				
+	insert_edge(&g, x, y, directed);		
     }
 }
 
-void insert_edge(Graph& g, int x, int y, bool directed)	//Листинг 7.4 (Вставка ребра)
-{
-    EdgeNode* p = new EdgeNode(); 
-    p->weight = 0;                 
-    p->y = y;                      
-    p->next = g.edges[x];         
 
-    g.edges[x] = p;               
-    g.degree[x]++;              
+void insert_edge(Graph* g, int x, int y, bool directed) {	//Листинг 7.4 (Вставка ребра)
+    EdgeNode* newEdge = new EdgeNode();  
+    newEdge->y = y;
+    newEdge->weight = 0;
+    newEdge->next = g->edges[x];
+
+    g->edges[x] = newEdge;
+    g->degree[x]++;
 
     if (!directed) {
-        insert_edge(g, y, x, true); 
+        insert_edge(g, y, x, true);
     } else {
-        g.nedges++;              
+        g->nedges++;
     }
 }
