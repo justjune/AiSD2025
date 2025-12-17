@@ -18,5 +18,4 @@ List<T>* item_ahead(List<T>* l, List<T>* x) {
     return item_ahead(l->next, x);
 }
 
-
 #endif
