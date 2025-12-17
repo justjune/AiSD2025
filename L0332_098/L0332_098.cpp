@@ -5,9 +5,9 @@
 #define L0332_098_CPP
 #include <iostream>
 #include "L0332_098.HPP"
-
+ // Функция рекурсивного поиска элемента x
 template <typename T>
-List<T>* search_list(List<T>* l, T x) { // Функция рекурсивного поиска элемента x
+List<T>* search_list(List<T>* l, T x) {
     if (l == nullptr) { // Если список пуст, возвращаем nullptr
         return nullptr;
     }
