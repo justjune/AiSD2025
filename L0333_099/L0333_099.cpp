@@ -17,30 +17,4 @@ void insert_list(List*& head, int x) {
     // Обновляем голову списка, указывая на новый узел
     head = newNode;
 }
-
-int main() {
-    List* head = nullptr; // Изначально список пуст
-
-    insert_list(head, 3); // Вставляем 3
-    insert_list(head, 2); // Вставляем 2
-    insert_list(head, 1); // Вставляем 1
-
-    // Вывод списка
-    List* current = head;
-    while (current != nullptr) {
-        std::cout << current->item << " ";
-        current = current->next;
-    }
-    std::cout << std::endl;
-
-    // Освобождаем память из-под списка
-    current = head;
-    while (current != nullptr) {
-        List* temp = current;
-        current = current->next;
-        delete temp;
-    }
-    #endif
-
-    return 0;
-}
+ #endif
