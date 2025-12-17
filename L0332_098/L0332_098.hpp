@@ -2,7 +2,8 @@
 #define L0332_098_HPP
 #include <iostream>
 
-template <typename T> // Предполагаем, что структура List определена следующим образом:
+// Определение структуры List
+template <typename T>
 struct List {
     T item; // Определение типа узла
     List<T>* next; // Создание указателя на следующий узел
