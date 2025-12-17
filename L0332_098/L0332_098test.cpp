@@ -1,19 +1,7 @@
 //Тест для листинга 3.2
 #include <iostream>
-
-template <typename T>
-struct List {
-    T item;
-    List<T>* next;
-    List(T val) : item(val), next(nullptr) {}
-};
-
-template <typename T>
-List<T>* search_list(List<T>* l, T x) {
-    if (l == nullptr) return nullptr; // Если список пуст, элемента нет.
-    if (l->item == x) return l;       // Если текущий элемент искомый, возвращаем его.
-    return search_list(l->next, x); // Ищем в остальной части списка.
-}
+#include "L0332_098.HPP"
+#include "L0332_098.CPP"
 
 int main() {
     system("chcp 65001 > nul");
