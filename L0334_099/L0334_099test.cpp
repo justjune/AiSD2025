@@ -1,3 +1,4 @@
+//Тесты для листинга 3.4
 #include <iostream>
 #include <cassert>
 #include "L0332_098.HPP"
@@ -9,6 +10,7 @@ int main() {
     List* empty_list = nullptr;
     List* node1 = new List(1);
     assert(item_ahead(empty_list, node1) == nullptr);
+    
     delete node1;
 
     // Тест 2: Один элемент в списке
