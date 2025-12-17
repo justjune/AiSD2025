@@ -5,6 +5,7 @@
 
 int main() {
     system("chcp 65001 > nul");
+    
     List* head = nullptr; // Начинаем с пустого списка
 
     insert_list(head, 3); // Вставляем 3
