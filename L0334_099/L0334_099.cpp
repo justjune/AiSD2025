@@ -6,16 +6,14 @@
 #include <iostream>
 #include "L0332_098.HPP"
 
+// Функция поиска l - предшествующего элемента x
 template <typename T>
 List<T>* item_ahead(List<T>* l, List<T>* x) {
-    // Если список пуст или l - последний элемент, возвращаем null.
-    if (l == nullptr || l->next == nullptr) return nullptr;
+    if (l == nullptr || l->next == nullptr) return nullptr; // Если список пуст или l - последний элемент, возвращаем null
 
-    // Проверяем, является ли следующий элемент за l элементом x.
-    if (l->next == x) return l;  // Если да, возвращаем l..
+    if (l->next == x) return l;  // Проверяем, является ли следующий элемент за l элементом x, если да, возвращаем l
 
-    // Рекурсивно ищем в остальной части списка.
-    return item_ahead(l->next, x);
+    return item_ahead(l->next, x); // Рекурсивно ищем в остальной части списка.
 }
 
 #endif
