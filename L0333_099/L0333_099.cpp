@@ -8,7 +8,7 @@
 
 // Функция вставки элемента в начало списка
 template <typename T>
-List<T>* insert_list(List<T>* head, T x) {
+List<T>* insert_list(List<T>*& head, T x) {
     // Создаем новый узел списка с данными x
     List<T>* newNode = new List<T>(x);
 
