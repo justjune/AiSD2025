@@ -1,16 +1,6 @@
 #include <iostream>
-
-struct List {
-    int item;
-    List* next;
-    List(int val) : item(val), next(nullptr) {}
-};
-
-void insert_list(List*& head, int x) {
-    List* newNode = new List(x);
-    newNode->next = head;
-    head = newNode;
-}
+#include "L0332_098.HPP"
+#include "L0333_099.CPP"
 
 int main() {
     system("chcp 65001 > nul");
