@@ -6,15 +6,17 @@
 #include <iostream>
 #include "L0332_098.HPP"
 
-List* item_ahead(List* l, List* x) {
+template <typename T>
+List<T>* item_ahead(List<T>* l, List<T>* x) {
     // Если список пуст или l - последний элемент, возвращаем null.
     if (l == nullptr || l->next == nullptr) return nullptr;
 
     // Проверяем, является ли следующий элемент за l элементом x.
-    if (l->next == x) return l; // Если да, возвращаем l.
+    if (l->next == x) return l;  // Если да, возвращаем l..
 
     // Рекурсивно ищем в остальной части списка.
     return item_ahead(l->next, x);
 }
+
 
 #endif
