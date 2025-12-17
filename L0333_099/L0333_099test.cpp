@@ -11,7 +11,7 @@ int main() {
     insert_list(head, 2); // Вставляем 1
     insert_list(head, 1); // Вставляем 1
 
-    // Clean resources
+    // Очищаем память:
     List* current = head;
     while(current){
         List *temp = current;
