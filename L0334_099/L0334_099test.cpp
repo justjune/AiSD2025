@@ -1,16 +1,7 @@
 #include <iostream>
 #include <cassert>
-
-// Включаем функцию item_ahead и структуру List из предыдущего ответа. Например:
-// #include "list_functions.h" // Если код находится в отдельном файле
-
-struct List {
-    int data;
-    List* next;
-    List(int val) : data(val), next(nullptr) {}
-};
-
-List* item_ahead(List* l, List* x);
+#include "L0332_098.HPP"
+#include "L0334_099.CPP"
 
 int main() {
     system("chcp 65001 > nul");
