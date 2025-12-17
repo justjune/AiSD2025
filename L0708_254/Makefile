@@ -1,7 +1,7 @@
 CXX=g++
 
 ifeq ($(OS),Windows_NT)
-	RM=del
+	RM=rm
 	EXT=.exe
 else
 	RM=rm
@@ -19,6 +19,9 @@ L0708_254.o: L0708_254.cpp
 L0708_254test.o: L0708_254test.cpp L0708_254.hpp
 	$(CXX) -c L0708_254test.cpp
 
-.PHONY: clean
+.PHONY: clean run all
 clean:
-	$(RM) $(objects) $(l0708_254o) m.exe L0708_254.exe
+	$(RM) -f $(l0708_254o) L0708_254.exe
+run:
+	L0708_254.exe
+all: L0708_254.exe run clean
