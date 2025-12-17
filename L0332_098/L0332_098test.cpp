@@ -5,9 +5,10 @@
 
 int main() {
     system("chcp 65001 > nul");
-    List<int>* head = new List<int>(1);
-    head->next = new List<int>(2);
-    head->next->next = new List<int>(3);
+    
+    List<int>* head = new List<int>(1); // Вставляем 1
+    head->next = new List<int>(2); // Вставляем 2
+    head->next->next = new List<int>(3); // Вставляем 3
 
     int search_value = 2;  //Значение для поиска
 
@@ -18,6 +19,7 @@ int main() {
     } else {
         std::cout << "Элемент не найден" << std::endl;
     }
+    
     //Важно убрать утечки памяти:
     delete head->next->next;
     delete head->next;
