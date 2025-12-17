@@ -1,7 +1,10 @@
 //L0333_099
 //вставка элемента в связный список
 //Быков Илья МХ-2 21.10.25
+#ifndef L0333_099_CPP
+#define L0333_099_CPP
 #include <iostream>
+#include "L0332_098.HPP"
 
 // Определение структуры узла списка
 struct List {
@@ -45,6 +48,7 @@ int main() {
         current = current->next;
         delete temp;
     }
+    #endif
 
     return 0;
 }
