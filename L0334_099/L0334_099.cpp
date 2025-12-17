@@ -9,11 +9,13 @@
 // Функция поиска l - предшествующего элемента x
 template <typename T>
 List<T>* item_ahead(List<T>* l, List<T>* x) {
-    if (l == nullptr || l->next == nullptr) return nullptr; // Если список пуст или l - последний элемент, возвращаем null
-
-    if (l->next == x) return l;  // Проверяем, является ли следующий элемент за l элементом x, если да, возвращаем l
-
-    return item_ahead(l->next, x); // Рекурсивно ищем в остальной части списка.
+    if (l == nullptr || l->next == nullptr) { // Если список пуст или l - последний элемент
+        return nullptr; // Возвращаем null
+    };
+    if (l->next == x) { // Проверяем, является ли следующий элемент за l элементом x
+        return l;  // Если да, то возвращаем l
+    }
+    return item_ahead(l->next, x); // Рекурсивно ищем в остальной части списка
 }
 
 #endif
