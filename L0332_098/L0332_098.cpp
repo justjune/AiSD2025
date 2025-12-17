@@ -9,13 +9,13 @@
  // Функция рекурсивного поиска элемента x
 template <typename T>
 List<T>* search_list(List<T>* l, T x) {
-    if (l == nullptr) { // Если список пуст, возвращаем nullptr
-        return nullptr;
+    if (l == nullptr) { // Если список пуст
+        return nullptr; // Возвращаем nullptr
     }
     if (l->item == x) { // Если элемент текущего узла равен искомому значению
         return l; // Возвращаем указатель на текущий узел
     } else {
-        return search_list(l->next, x); // Иначе, рекурсивно вызываем функцию поиска для следующего узла списка
+        return search_list(l->next, x); // Рекурсивно вызываем функцию поиска для следующего узла списка
     }
 }
 
