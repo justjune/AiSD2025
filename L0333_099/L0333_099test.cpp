@@ -4,11 +4,11 @@
 
 int main() {
     system("chcp 65001 > nul");
-    List* head = nullptr; // start from empty list
+    List* head = nullptr; // Начинаем с пустого списка
 
-    insert_list(head, 3); // Insert 3
-    insert_list(head, 2); // Insert 2
-    insert_list(head, 1); // Insert 1
+    insert_list(head, 3); // Вставляем 3
+    insert_list(head, 2); // Вставляем 1
+    insert_list(head, 1); // Вставляем 1
 
     // Clean resources
     List* current = head;
