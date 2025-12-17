@@ -1,14 +1,10 @@
 //L0334_099
 //поиск элемента, предшествующего удаляемому
 //Быков Илья МХ-2 21.10.25
+#ifndef L0334_099_CPP
+#define L0334_099_CPP
 #include <iostream>
-
-struct List {
-    int data;
-    List* next;
-
-    List(int val) : data(val), next(nullptr) {}
-};
+#include "L0332_098.HPP"
 
 List* item_ahead(List* l, List* x) {
     // Если список пуст или l - последний элемент, возвращаем null.
@@ -42,3 +38,4 @@ int main() {
     delete node3;
     return 0;
 }
+#endif
