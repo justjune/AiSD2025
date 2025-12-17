@@ -7,9 +7,10 @@
 #include "L0332_098.HPP"
 
 // Функция вставки элемента в начало списка
-void insert_list(List*& head, int x) {
-    // Создаём новый узел
-    List* newNode = new List(x);
+template <typename T>
+void insert_list(List<T>*& head, T x) {
+    // Создаем новый узел списка с данными x
+    List<T>* newNode = new List<T>(x);
 
     // Указываем новому узлу на текущую голову списка
     newNode->next = head;
@@ -17,4 +18,5 @@ void insert_list(List*& head, int x) {
     // Обновляем голову списка, указывая на новый узел
     head = newNode;
 }
+
  #endif
