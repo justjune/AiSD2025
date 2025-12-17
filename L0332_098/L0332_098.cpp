@@ -2,13 +2,8 @@
 //рекурсивный поиск элемента в связном списке
 //Быков Илья МХ-2 20.10.25
 #include <iostream>
+#include "L0332_098.HPP"
 
-template <typename T> // Предполагаем, что структура List определена следующим образом:
-struct List {
-    T item; // Определение типа узла
-    List<T>* next; // Создание указателя на следующий узел
-    List(T val) : item(val), next(nullptr) {} //Конструктор создания нового узла
-};
 template <typename T>
 List<T>* search_list(List<T>* l, T x) { // Функция рекурсивного поиска элемента x
     if (l == nullptr) { // Если список пуст, возвращаем nullptr
