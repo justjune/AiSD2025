@@ -1,10 +1,11 @@
 //L0332_098
-//рекурсивный поиск элемента в связном списке
+//Рекурсивный поиск элемента в связном списке
 //Быков Илья МХ-2 20.10.25
 #ifndef L0332_098_CPP
 #define L0332_098_CPP
 #include <iostream>
 #include "L0332_098.HPP"
+
  // Функция рекурсивного поиска элемента x
 template <typename T>
 List<T>* search_list(List<T>* l, T x) {
@@ -17,4 +18,5 @@ List<T>* search_list(List<T>* l, T x) {
         return search_list(l->next, x); // Иначе, рекурсивно вызываем функцию поиска для следующего узла списка
     }
 }
+
 #endif
