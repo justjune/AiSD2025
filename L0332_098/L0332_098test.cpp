@@ -9,7 +9,7 @@ int main() {
     head->next = new List<int>(2);
     head->next->next = new List<int>(3);
 
-    int search_value = 2;  //Значение для поиска.
+    int search_value = 2;  //Значение для поиска
 
     List<int>* result = search_list(head, search_value);
 
@@ -18,8 +18,8 @@ int main() {
     } else {
         std::cout << "Элемент не найден" << std::endl;
     }
-
-    delete head->next->next; //Важно убрать утечки памяти
+    //Важно убрать утечки памяти:
+    delete head->next->next;
     delete head->next;
     delete head;
 
