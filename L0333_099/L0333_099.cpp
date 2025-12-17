@@ -10,9 +10,7 @@
 template <typename T>
 List<T>* insert_list(List<T>*& head, T x) {
     List<T>* newNode = new List<T>(x); // Создаем новый узел списка с данными x
-
     newNode->next = head; // Указываем новому узлу на текущую голову списка
-
     head = newNode; // Обновляем голову списка, указывая на новый узел
 }
 
