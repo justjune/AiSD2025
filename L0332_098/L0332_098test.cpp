@@ -5,10 +5,11 @@
 
 int main() {
     system("chcp 65001 > nul");
-    
-    List<int>* head = new List<int>(1); // Вставляем 1
-    head->next = new List<int>(2); // Вставляем 2
-    head->next->next = new List<int>(3); // Вставляем 3
+
+    // Создаём в списке новые узлы 1, 2 и 3:
+    List<int>* head = new List<int>(1);
+    head->next = new List<int>(2);
+    head->next->next = new List<int>(3);
 
     int search_value = 2;  //Значение для поиска
 
