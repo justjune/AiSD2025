@@ -10,7 +10,7 @@ L0724_273.o: L0724_273.cpp L0724_273.hpp
 L0724_273test.o: L0724_273test.cpp L0724_273.hpp
 	$(CXX) -c L0724_273test.cpp
 
-.PHONY: clean run
+.PHONY: clean run all
 clean:
 	rm -f $(l0724273o) L0724273.exe
 
