@@ -15,5 +15,4 @@ clean:
 	rm -f $(l0723272o) L0723272.exe
 
 run: L0723272.exe
-	./L0723272.exe
-all: L0723_272.exe run clean
+all: L0723272.exe run clean
