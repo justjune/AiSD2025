@@ -1,5 +1,3 @@
-
-
 int const PRINT_FREQUENCY = 10000;
 int const COOLING_STEPS = 1000;
 int const STEPS_PER_TEMP = 1000;

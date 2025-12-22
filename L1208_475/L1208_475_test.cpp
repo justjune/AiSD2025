@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 
 #include "L1208_475.hpp"
@@ -14,14 +14,14 @@ void solution_count_update(TSP_Solution* s, TSP_Instance* t) {
 }
 
 void anneal(TSP_Instance* t, TSP_Solution* s) {
-	int x, y;                       /* пара точек для перестановки */
-	int i, j;                       /* счетчики */
-	bool accept_win, accept_loss;   /* условия принятия перехода */
-	double temperature;             /* текущая температура системы */
-	double current_value;           /* текущее значение */
-	double start_value;             /* значение на момент начала цикла */
-	double delta;                   /* значение после обмена */
-	double exponent;                /* показатель степени для функции энерг. состояния */
+	int x, y;                       /* РїР°СЂР° С‚РѕС‡РµРє РґР»СЏ РїРµСЂРµСЃС‚Р°РЅРѕРІРєРё */
+	int i, j;                       /* СЃС‡РµС‚С‡РёРєРё */
+	bool accept_win, accept_loss;   /* СѓСЃР»РѕРІРёСЏ РїСЂРёРЅСЏС‚РёСЏ РїРµСЂРµС…РѕРґР° */
+	double temperature;             /* С‚РµРєСѓС‰Р°СЏ С‚РµРјРїРµСЂР°С‚СѓСЂР° СЃРёСЃС‚РµРјС‹ */
+	double current_value;           /* С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ */
+	double start_value;             /* Р·РЅР°С‡РµРЅРёРµ РЅР° РјРѕРјРµРЅС‚ РЅР°С‡Р°Р»Р° С†РёРєР»Р° */
+	double delta;                   /* Р·РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РѕР±РјРµРЅР° */
+	double exponent;                /* РїРѕРєР°Р·Р°С‚РµР»СЊ СЃС‚РµРїРµРЅРё РґР»СЏ С„СѓРЅРєС†РёРё СЌРЅРµСЂРі. СЃРѕСЃС‚РѕСЏРЅРёСЏ */
 
 	temperature = INITIAL_TEMPERATURE;
 
@@ -34,12 +34,12 @@ void anneal(TSP_Instance* t, TSP_Solution* s) {
 		start_value = current_value;
 
 		for (j = 1; j <= STEPS_PER_TEMP; j++) {
-			/* выбор индексов элементов для обмена местами */
+			/* РІС‹Р±РѕСЂ РёРЅРґРµРєСЃРѕРІ СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ РѕР±РјРµРЅР° РјРµСЃС‚Р°РјРё */
 			x = random_int(1, t->n);
 			y = random_int(1, t->n);
 
 			delta = transition(s, t, x, y);
-			accept_win = (delta < 0);       /* снизил ли обмен стоимость? */
+			accept_win = (delta < 0);       /* СЃРЅРёР·РёР» Р»Рё РѕР±РјРµРЅ СЃС‚РѕРёРјРѕСЃС‚СЊ? */
 
 			exponent = (-delta / current_value) / (K * temperature);
 			accept_loss = (exp(exponent) > random_float(0, 1));
@@ -48,12 +48,12 @@ void anneal(TSP_Instance* t, TSP_Solution* s) {
 				current_value += delta;
 			}
 			else {
-				transition(s, t, x, y);     /* обратное перестановка в случае неудачи */
+				transition(s, t, x, y);     /* РѕР±СЂР°С‚РЅРѕРµ РїРµСЂРµСЃС‚Р°РЅРѕРІРєР° РІ СЃР»СѓС‡Р°Рµ РЅРµСѓРґР°С‡Рё */
 			}
 			solution_count_update(s, t);
 		}
 
-		if (current_value < start_value) {  /* повторяем при этой температуре */
+		if (current_value < start_value) {  /* РїРѕРІС‚РѕСЂСЏРµРј РїСЂРё СЌС‚РѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂРµ */
 			temperature /= COOLING_FRACTION;
 		}
 	}
@@ -102,11 +102,4 @@ int main()
 	problem.n = i;
 
 	repeated_annealing(&problem, 10, &solution);
-
-	/*for (int i = 0; i < problem.n; i++)
-	{
-
-		cout << problem.point_array[i].x << " " << problem.point_array[i].y;
-		cout << '\n';
-	}*/
 }
