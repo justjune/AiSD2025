@@ -9,28 +9,9 @@ else
 	EXT=
 endif
 
-
-l0703_242o=L0703_242.o L0703_242_test.o L0702_242.o
-
-
 l1208_475_objects=L1208_475.o L1208_475_test.o
 
-
-all: L0703_242$(EXT) L1208_475$(EXT)
-
-
-L0703_242$(EXT): $(l0703_242o)
-	$(CXX) -o $@ $(l0703_242o)
-
-L0703_242.o: L0703_242.cpp
-	$(CXX) $(CXXFLAGS) -c L0703_242.cpp
-
-L0703_242_test.o: L0703_242_test.cpp L0703_242.hpp
-	$(CXX) $(CXXFLAGS) -c L0703_242_test.cpp
-
-L0702_242.o: ../L0702_242/L0702_242.cpp
-	$(CXX) $(CXXFLAGS) -c ../L0702_242/L0702_242.cpp
-
+all: L1208_475$(EXT)
 
 L1208_475$(EXT): $(l1208_475_objects)
 	$(CXX) -o $@ $(l1208_475_objects)
@@ -41,17 +22,10 @@ L1208_475.o: L1208_475.cpp L1208_475.hpp
 L1208_475_test.o: L1208_475_test.cpp L1208_475.hpp
 	$(CXX) $(CXXFLAGS) -c L1208_475_test.cpp
 
-
-.PHONY: clean run run_0703 run_1208 clean_all
-
 clean:
-	$(RM) -f $(l0703_242o) $(l1208_475_objects)
+	$(RM) -f $(l1208_475_objects) L1208_475$(EXT)
 
-clean_all:
-	$(RM) -f $(l0703_242o) $(l1208_475_objects) L0703_242$(EXT) L1208_475$(EXT)
-
-run_0703: L0703_242$(EXT)
-	./L0703_242$(EXT)
-
-run_1208: L1208_475$(EXT)
+run: L1208_475$(EXT)
 	./L1208_475$(EXT)
+
+allrun: all run clean
