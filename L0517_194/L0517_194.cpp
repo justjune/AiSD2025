@@ -1,6 +1,6 @@
 #include <iostream>
-#include "L0705_244.hpp"
-#include "L517_194.hpp"
+#include "../L0705_244/L0705_244.hpp"
+#include "L0517_194.hpp"
 
 // Функции для обработки вершин и рёбер
 void process_vertex_early(int v) {

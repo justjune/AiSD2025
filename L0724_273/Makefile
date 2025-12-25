@@ -15,4 +15,7 @@ clean:
 	rm -f $(l0724273o) L0724273.exe
 
 run: L0724273.exe
+	chcp 65001
+	./L0724273.exe
+	
 all: L0724273.exe run clean
