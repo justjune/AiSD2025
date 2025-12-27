@@ -14,3 +14,26 @@ void print_graph(graph *g) {
         std::cout << std::endl;
     }
 }
+
+
+//Функция для добавления ребра
+void insert_edge(graph *g, int x, int y, int w, bool directed) {
+    if (x < 1 || x > g->nvertices || y < 1 || y > g->nvertices) {
+        std::cout << "Ошибка: Вершины вне диапазона." << std::endl; // если вершины вне диапазона ввыводим логи
+        return;
+    }
+
+    edgenode *p = new edgenode;  // Выделяем память для нового ребра
+    p->weight = w;               // Устанавливаем вес
+    p->y = y;               // Устанавливаем вторую точку ребра
+    p->next = g->edges[x];       // добавляем остальные ребра в p      
+    g->edges[x] = p;             // добавляем новое ребро в граф
+    g->degree[x]++;              // увеличиваем степень вершины
+
+    // если граф ненаправленный то записывем данные для второй точки
+    if (!directed) { 
+        insert_edge(g, y, x, w, true);
+    } else {
+        g->nedges++;
+    }
+}

@@ -1,6 +1,8 @@
 #ifndef L0723_272_HPP
 #define L0723_272_HPP
 
+#include "../L0517_194/L0517_194.hpp"
+#include "../L0705_244/L0705_244.hpp"
 #include <vector>
 #include <stack>
 
@@ -44,7 +46,7 @@ public:
     Graph(int n);
 
     // Добавить ориентированное ребро
-    void add_edge(int x, int y);
+    void insert_edge(int x, int y);
 
     // Топологическая сортировка
     void topsort();
