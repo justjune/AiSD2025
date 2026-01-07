@@ -11,16 +11,16 @@ using namespace std;
 
 int main() { 
 int start;
+cout << "Number of initial vertices: ";
 cin >> start;
-
 Graph graph; 
-initialize_graph(graph, false); 
+initialize_graph(graph, false);
 ifstream cin("L0709_254test.txt");		// Листинг 7.3
 read_graph(graph, false, cin);
 
 
 bfs(&graph, start);
-
+ cout << "\n";
  return 0;
 }
 

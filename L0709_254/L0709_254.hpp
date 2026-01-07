@@ -25,6 +25,7 @@ int directed;
 };
 
 void process_vertex_late(int v);
+void initialize_search(Graph *g, vector<bool>& processed, vector<bool>& discovered, vector<int>& parent);
 void initialize_graph(Graph &g, bool directed);
 void read_graph(Graph &g, bool directed, ifstream &cin);
 void insert_edge(Graph *g, int x, int y, bool directed);

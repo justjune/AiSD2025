@@ -16,20 +16,12 @@ void process_vertex_late(int v)
 }
 
 void bfs(Graph *g, int start) {
-//////////////         Предыдущий Листинг 7.8
-vector<bool> processed(MAXV+1);				// Обработанные вершины 
-vector<bool> discovered(MAXV+1);			// Открытые вершины 
-vector<int>  parent(MAXV+1);				// Отношения открытия
-
-//int time = 0;
-
-for (int i = 0; i <= g->nvertices; ++i) {
-    processed[i] = false;    
-    discovered[i] = false;   
-    parent[i] = -1;          
-    }
-///////////////
-
+    
+    vector<bool> processed(MAXV+1);			// Обработанные вершины, объявляем в bfs для упрощения работы
+    vector<bool> discovered(MAXV+1);			// Открытые вершины, объявляем в bfs для упрощения работы 
+    vector<int>  parent(MAXV+1);			// Отношения открытия, объявляем в bfs для упрощения работы	
+    initialize_search(g, processed, discovered, parent); 
+    
     queue<int> q;			// Очередь для хранения вершин
     q.push(start);			// Добавляем начальную вершину в очередь
     discovered[start] = true;
@@ -56,8 +48,16 @@ for (int i = 0; i <= g->nvertices; ++i) {
     }
 }
 
+void initialize_search(Graph *g, vector<bool>& processed, vector<bool>& discovered, vector<int>& parent) // Листинг 7.8 
+{
+//int time = 0;
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+for (int i = 0; i <= g->nvertices; ++i) {
+    processed[i] = false;    			// Вершина не обработана
+    discovered[i] = false;   			// Вершина не открыта
+    parent[i] = -1;          			// Нет родителя
+    }
+}
 
 
 void initialize_graph(Graph &g, bool directed)		// Листинг 7.2 (Инициализация графа)
