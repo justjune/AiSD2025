@@ -22,6 +22,9 @@ int nvertices;
 int nedges;
 int directed;
 };
+void initialize_graph(Graph &g, bool directed);
+void read_graph(Graph &g, bool directed, ifstream &cin);
+void insert_edge(Graph *g, int x, int y, bool directed);
 
 void initialize_search(Graph *g);
 
