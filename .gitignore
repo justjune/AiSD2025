@@ -1,0 +1,6 @@
+.vs
+.vscode/
+build/
+.vscode/settings.json
+*.o
+*.exe
