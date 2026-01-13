@@ -3,19 +3,19 @@ CXX = g++
 l1010367o = L1010_367.o L1010_367test.o
 
 L1010_367.exe: $(l1010367o)
-  $(CXX) -o L1010_367.exe $(l1010367o)
+	$(CXX) -o L1010_367.exe $(l1010367o)
 
 L1010_367.o: L1010_367.cpp L1010_367.hpp
-  $(CXX) -c L1010_367.cpp
+	$(CXX) -c L1010_367.cpp
 
 L1010_367test.o: L1010_367test.cpp L1010_367.hpp
-  $(CXX) -c L1010_367test.cpp
+	$(CXX) -c L1010_367test.cpp
 
 .PHONY: clean all
 clean:
-  rm -f $(l1010367o) L1010_367.exe
+	rm -f $(l1010367o) L1010_367.exe
 all: L1010_367.exe
-  @chcp 65001 & \
-    L1010_367.exe & \
-    chcp 866
-  @{MAKE} clean
+	@chcp 65001 & \
+		L1010_367.exe & \
+		chcp 866
+	@{MAKE} clean
