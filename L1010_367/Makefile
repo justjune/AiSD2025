@@ -11,11 +11,15 @@ L1010_367.o: L1010_367.cpp L1010_367.hpp
 L1010_367test.o: L1010_367test.cpp L1010_367.hpp
 	$(CXX) -c L1010_367test.cpp
 
-.PHONY: clean all
+.PHONY: clean run all
 clean:
 	rm -f $(l1010367o) L1010_367.exe
-all: L1010_367.exe
+
+run: L1010_367.exe
 	@chcp 65001 & \
-		L1010_367.exe & \
+		./L1010_367.exe & \
 		chcp 866
+
+all: L1010_367.exe
+	@{MAKE} run
 	@{MAKE} clean
