@@ -1,9 +1,8 @@
-//L310_112
+//L310_111
 //Вставка элементов в дерево
 //ПМ-2025 Овсянникова Анастасия
-#include "L310_112.hpp"
+#include "L310_111.hpp"
 
-// Реализация функции вставки
 void insert_tree(tree** l, int x, tree* parent) {
     if (*l == nullptr) {
         tree* p = new tree;
