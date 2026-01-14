@@ -2,8 +2,9 @@
 //Топологическая сортировка
 //Гаврилюк Екатерина, МЕН-243201 (ПМ-201) 11.11.2025
 #include "L0723_272.hpp"
-#include "../L0517_194/L0517_194.hpp"
 #include "../L0705_244/L0705_244.hpp"
+#include "../L0517_194/L0517_194.hpp"
+#include "../L0517_194/L0517_194.cpp"
 #include <iostream>
 
 void Graph::process_vertex_late(int v) {
