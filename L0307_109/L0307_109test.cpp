@@ -1,14 +1,14 @@
-// L307_109test.cpp
+// L0307_109test.cpp
 // Тестирование алгоритма рекурсивного поиска в бинарном дереве
 // ПМ-2025 Овсянникова Анастасия
 
 #include <iostream>
 #include <limits>
-#include "L307_109.hpp"
+#include "L0307_109.hpp"
 
-// Берем функцию вставки из проекта L310_111 (процедура 3.10)
+// Берем функцию вставки из проекта L0310_111 (процедура 3.10)
 // Но без parent, так как в L307_109 структура tree не имеет parent
-void insert_tree_from_L310(tree** l, item_type x) {
+void insert_tree_from_L0310(tree** l, item_type x) {
     if (*l == nullptr) {
         tree* p = new tree;
         p->item = x;
@@ -17,9 +17,9 @@ void insert_tree_from_L310(tree** l, item_type x) {
         return;
     }
     if (x < (*l)->item) {
-        insert_tree_from_L310(&((*l)->left), x);
+        insert_tree_from_L0310(&((*l)->left), x);
     } else {
-        insert_tree_from_L310(&((*l)->right), x);
+        insert_tree_from_L0310(&((*l)->right), x);
     }
 }
 
@@ -27,13 +27,13 @@ int main() {
     tree* root = nullptr;
     
     // ВОТ ИСПРАВЛЕНИЕ: используем функцию вставки для сборки дерева
-    // (процедура 3.10 из L310_111)
-    insert_tree_from_L310(&root, 8);
-    insert_tree_from_L310(&root, 3);
-    insert_tree_from_L310(&root, 10);
-    insert_tree_from_L310(&root, 1);
-    insert_tree_from_L310(&root, 6);
-    insert_tree_from_L310(&root, 14);
+    // (процедура 03.10 из L0310_111)
+    insert_tree_from_L0310(&root, 8);
+    insert_tree_from_L0310(&root, 3);
+    insert_tree_from_L0310(&root, 10);
+    insert_tree_from_L0310(&root, 1);
+    insert_tree_from_L0310(&root, 6);
+    insert_tree_from_L0310(&root, 14);
     
     std::cout << "=== Тестирование поиска в BST ===" << std::endl;
     std::cout << "Дерево собрано через insert_tree (процедура 3.10)" << std::endl;
