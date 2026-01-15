@@ -1,5 +1,3 @@
-// Садрисламов Рeваль ПМ-201
-
 #include <iostream>
 #include <queue>
 #include "L0714_257.hpp"
