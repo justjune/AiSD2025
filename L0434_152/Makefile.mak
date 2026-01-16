@@ -2,7 +2,7 @@ CXX      := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra
 
 TARGET := PriorityQueue
-SRC    := main.cpp
+SRC    := L434_152.cpp
 
 .PHONY: all clean
 
