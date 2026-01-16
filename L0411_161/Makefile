@@ -1,25 +1,23 @@
-CXX=g++
+CXX = g++
+CXXFLAGS = -std=c++20 -Wall -Wextra -pedantic
 
-ifeq ($(OS),Windows_NT)
-	RM=rm
-	EXT=.exe
-else
-	RM=rm
-	EXT=
-endif
+l0411161_o = L0411_161.o L0411_161test.o
 
-10411_161.exe: 10411_161.o 10411_161test.o
-	$(CXX) -o 10411_161.exe 10411_161.o 10411_161test.o
+L0411_161.exe: $(l0411161_o)
+	$(CXX) $(CXXFLAGS) -o L0411_161.exe $(l0411161_o)
 
-10411_161.o: 10411_161.hpp
-	$(CXX) -c 10411_161.hpp
+L0411_161.o: L0411_161.cpp L0411_161.hpp
+	$(CXX) $(CXXFLAGS) -c L0411_161.cpp
 
-10411_161test.o: 10411_161test.cpp 10411_161.hpp
-	$(CXX) -c 10411_161test.cpp
+L0411_161test.o: L0411_161test.cpp L0411_161.hpp
+	$(CXX) $(CXXFLAGS) -c L0411_161test.cpp
 
-run:
-	./10411_161.exe
+.PHONY: clean run all
 
-.PHONY: clean 
 clean:
-	$(RM) *.o *.exe
+	rm -f $(l0411161_o) L0411_161.exe
+
+run: L0411_161.exe
+	./L0411_161.exe
+
+all: clean L0411_161.exe
