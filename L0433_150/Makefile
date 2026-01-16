@@ -1,13 +1,14 @@
 CXX = g++
 
-OBJ = L0433_150.o
-EXE = L0433_150.exe
+SRC = L0143_150_Test.cpp
+OBJ = L0433_150_Test.o
+EXE = L0433_150_Test.exe
 
 $(EXE): $(OBJ)
   $(CXX) -o $(EXE) $(OBJ)
 
-$(OBJ): L0433_150.cpp
-  $(CXX) -c L0433_150.cpp -o $(OBJ)
+$(OBJ): $(SRC) L0433_150.hpp
+  $(CXX) -c $(SRC) -o $(OBJ)
 
 .PHONY: clean run all
 
