@@ -5,9 +5,13 @@ using namespace std;
 
 
 int main(){
-
-    SetConsoleOutputCP(CP_UTF8); //кодировка
-
+    #ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8); //кодировка
+    
+    #elif _WIN64
+        SetConsoleOutputCP(CP_UTF8); //кодировка
+    
+    #endif
     cout << "=== ТЕСТ 1: Ориентированный двудольный граф ===" << endl;
     
     Graph g;

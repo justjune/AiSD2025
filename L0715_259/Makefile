@@ -26,7 +26,10 @@ else
 	rm -f $(OBJECTS)
 endif
 
+all:
+	@cmd /c "mingw32-make" run clean
+
 run: $(TARGET)
 	./$(TARGET)
 
-.PHONY: clean run 
+.PHONY: clean run all
